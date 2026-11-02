@@ -1,6 +1,7 @@
 node_modules
 .next
-out
+out/
+rp-engineering-site-deploy.zip
 *.log
 .env
 .env.local
