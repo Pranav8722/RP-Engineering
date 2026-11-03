@@ -1,0 +1,9 @@
+{
+  "name": "rp-engineering-contact-function",
+  "private": true,
+  "version": "1.0.0",
+  "description": "R.P Engineering website contact form Lambda",
+  "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.0.0"
+  }
+}

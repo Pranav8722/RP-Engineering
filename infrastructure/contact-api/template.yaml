@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: R.P Engineering contact form API. Sends enquiries through Amazon SES.
+
+Parameters:
+  SenderEmail:
+    Type: String
+    Description: SES-verified sender email address.
+  RecipientEmail:
+    Type: String
+    Description: Inbox that receives website enquiries. In SES sandbox, this must also be verified.
+  WebsiteOrigin:
+    Type: String
+    Default: https://rp-engineering.in
+    Description: Production website origin allowed to call the API.
+  WwwWebsiteOrigin:
+    Type: String
+    Default: https://www.rp-engineering.in
+    Description: www website origin allowed to call the API.
+
+Resources:
+  ContactApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Description: Public endpoint for the R.P Engineering contact form.
+      DefinitionBody:
+        openapi: 3.0.1
+        info:
+          title: rp-engineering-contact-api
+          version: 1.0.0
+        paths: {}
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref WebsiteOrigin
+          - !Ref WwwWebsiteOrigin
+        AllowHeaders:
+          - Content-Type
+        AllowMethods:
+          - POST
+          - OPTIONS
+        MaxAge: 600
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 10
+        ThrottlingRateLimit: 2
+
+  ContactFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: function/
+      Handler: index.handler
+      Runtime: nodejs22.x
+      MemorySize: 128
+      Timeout: 10
+      ReservedConcurrentExecutions: 2
+      Environment:
+        Variables:
+          FROM_EMAIL: !Ref SenderEmail
+          TO_EMAIL: !Ref RecipientEmail
+          ALLOWED_ORIGINS: !Sub "${WebsiteOrigin},${WwwWebsiteOrigin}"
+      Policies:
+        - Statement:
+            Effect: Allow
+            Action:
+              - ses:SendEmail
+            Resource: !Sub "arn:${AWS::Partition}:ses:${AWS::Region}:${AWS::AccountId}:identity/${SenderEmail}"
+      Events:
+        Contact:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ContactApi
+            Path: /contact
+            Method: POST
+            PayloadFormatVersion: "2.0"
+
+Outputs:
+  ContactApiUrl:
+    Description: Set this value as NEXT_PUBLIC_CONTACT_API_URL in Cloudflare Pages.
+    Value: !Sub "https://${ContactApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/contact"
+  ContactFunctionName:
+    Description: Lambda function name for logs and monitoring.
+    Value: !Ref ContactFunction

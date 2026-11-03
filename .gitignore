@@ -1,6 +1,7 @@
 node_modules
 .next
 out/
+.aws-sam/
 rp-engineering-site-deploy.zip
 *.log
 .env

@@ -48,7 +48,7 @@ function Arrow({ diagonal = false }: { diagonal?: boolean }) {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [darkMode, setDarkMode] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
 
@@ -91,17 +91,40 @@ export default function Home() {
     setGalleryIndex((current) => current === null ? 0 : (current + direction + shinoliImages.length) % shinoliImages.length);
   }
 
-  function submitEnquiry(event: FormEvent<HTMLFormElement>) {
+  async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = data.get("name") || "";
-    const company = data.get("company") || "";
-    const phone = data.get("phone") || "";
-    const message = data.get("message") || "";
-    const subject = encodeURIComponent(`Website enquiry from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nCompany: ${company}\nPhone: ${phone}\n\nRequirement:\n${message}`);
-    window.location.href = `mailto:sjbadaskar@reddifmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const endpoint = process.env.NEXT_PUBLIC_CONTACT_API_URL;
+
+    if (!endpoint) {
+      setFormStatus("error");
+      return;
+    }
+
+    setFormStatus("submitting");
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          company: data.get("company"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          message: data.get("message"),
+          website: data.get("website"),
+        }),
+      });
+
+      if (!response.ok) throw new Error("Enquiry request failed");
+
+      form.reset();
+      setFormStatus("success");
+    } catch {
+      setFormStatus("error");
+    }
   }
 
   return (
@@ -212,10 +235,13 @@ export default function Home() {
         <form className="contact-form reveal delay-1" onSubmit={submitEnquiry}>
           <label>Your name<input required name="name" placeholder="Enter your name" /></label>
           <label>Company<input name="company" placeholder="Company name" /></label>
+          <label>Email address<input name="email" type="email" placeholder="name@company.com" /></label>
           <label>Phone number<input required name="phone" type="tel" placeholder="Your contact number" /></label>
           <label>How can we help?<textarea required name="message" placeholder="Tell us about your requirement" rows={3} /></label>
-          <button className="button button-hot" type="submit">Send enquiry <Arrow diagonal /></button>
-          {sent && <p className="form-note">Your email app will open with the enquiry details. You can also call us directly.</p>}
+          <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: "none" }} />
+          <button className="button button-hot" type="submit" disabled={formStatus === "submitting"}>{formStatus === "submitting" ? "Sending…" : <>Send enquiry <Arrow diagonal /></>}</button>
+          {formStatus === "success" && <p className="form-note success" role="status">Thank you. Your enquiry has been sent—we&apos;ll get back to you shortly.</p>}
+          {formStatus === "error" && <p className="form-note error" role="alert">We couldn&apos;t send the enquiry right now. Please call us at +91 94212 40625 or email us directly.</p>}
         </form>
       </section>
 
