@@ -3,12 +3,11 @@ const { SESv2Client, SendEmailCommand } = require("@aws-sdk/client-sesv2");
 const ses = new SESv2Client({});
 const MAX_LENGTHS = { name: 120, company: 160, email: 254, phone: 40, message: 4000 };
 
-function json(statusCode, body, origin) {
+function json(statusCode, body) {
   return {
     statusCode,
     headers: {
       "content-type": "application/json; charset=utf-8",
-      ...(origin ? { "access-control-allow-origin": origin, vary: "Origin" } : {}),
     },
     body: JSON.stringify(body),
   };
@@ -39,11 +38,11 @@ exports.handler = async (event) => {
     const body = event.isBase64Encoded ? Buffer.from(event.body || "", "base64").toString("utf8") : event.body || "{}";
     payload = JSON.parse(body);
   } catch {
-    return json(400, { message: "Invalid enquiry data." }, origin);
+    return json(400, { message: "Invalid enquiry data." });
   }
 
   // Hidden field: automated bots commonly populate every form field.
-  if (normalise(payload.website, 200)) return json(202, { message: "Enquiry received." }, origin);
+  if (normalise(payload.website, 200)) return json(202, { message: "Enquiry received." });
 
   const name = normalise(payload.name, MAX_LENGTHS.name);
   const company = normalise(payload.company, MAX_LENGTHS.company);
@@ -53,7 +52,7 @@ exports.handler = async (event) => {
   const emailIsValid = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   if (!name || !phone || !message || !emailIsValid) {
-    return json(400, { message: "Please provide your name, phone number, and enquiry details." }, origin);
+    return json(400, { message: "Please provide your name, phone number, and enquiry details." });
   }
 
   const plainText = [
@@ -93,8 +92,8 @@ exports.handler = async (event) => {
     }));
   } catch (error) {
     console.error("Unable to send contact email", { errorName: error?.name });
-    return json(502, { message: "We could not send your enquiry. Please try again shortly." }, origin);
+    return json(502, { message: "We could not send your enquiry. Please try again shortly." });
   }
 
-  return json(202, { message: "Enquiry sent." }, origin);
+  return json(202, { message: "Enquiry sent." });
 };
