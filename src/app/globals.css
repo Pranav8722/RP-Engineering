@@ -587,8 +587,8 @@ p {
 }
 
 .hero-cinematic-copy {
-  max-width: 380px;
-  flex: 0 0 380px;
+  max-width: 430px;
+  flex: 0 1 430px;
 }
 
 .hero-kicker {
@@ -612,11 +612,11 @@ p {
 }
 
 .hero-title-animated {
-  max-width: 380px;
+  max-width: 420px;
   margin: 0 0 14px;
-  font-size: clamp(28px, 2.6vw, 44px);
+  font-size: clamp(30px, 3vw, 48px);
   font-weight: 700;
-  line-height: 1.06;
+  line-height: 1.05;
   letter-spacing: clamp(-1px, -0.15vw, -1.8px);
   font-family: var(--font-sans);
   color: #fff;
@@ -632,10 +632,10 @@ p {
 }
 
 .hero-desc-animated {
-  max-width: 360px;
+  max-width: 390px;
   margin: 0 0 20px;
   color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(12.5px, 0.9vw, 14px);
+  font-size: clamp(13px, 0.95vw, 14.5px);
   line-height: 1.55;
   font-weight: 400;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
@@ -663,14 +663,29 @@ p {
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.hero-actions .button {
+  white-space: nowrap;
+  padding: 0 20px;
+  height: 42px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .button-hero-phone {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #fff;
-  padding: 12px 18px;
+  padding: 0 16px;
+  height: 42px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-size: 11px;
@@ -679,6 +694,8 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.2s ease;
 }
 
@@ -947,8 +964,8 @@ p {
     padding-bottom: 10px;
   }
   .hero-cinematic-copy {
-    max-width: 360px;
-    flex: 0 0 360px;
+    max-width: 410px;
+    flex: 0 0 410px;
   }
   .hero-kicker {
     margin-bottom: 8px;
@@ -956,13 +973,19 @@ p {
   .hero-title-animated {
     font-size: clamp(26px, 2.4vw, 38px);
     margin-bottom: 8px;
-    max-width: 360px;
+    max-width: 410px;
   }
   .hero-desc-animated {
     font-size: 12.5px;
     margin-bottom: 14px;
     line-height: 1.5;
-    max-width: 330px;
+    max-width: 370px;
+  }
+  .hero-actions .button,
+  .button-hero-phone {
+    height: 38px;
+    padding: 0 14px;
+    font-size: 10.5px;
   }
   .hero-telemetry-panel {
     width: min(260px, 20vw);
@@ -2444,13 +2467,16 @@ body[data-theme="dark"] { background: #0c0f0e; }
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
+    flex-wrap: wrap;
   }
 
-  .hero-actions .button {
+  .hero-actions .button,
+  .button-hero-phone {
     width: 100%;
     justify-content: center;
+    height: 46px;
   }
 
   .hero-live-metrics {
