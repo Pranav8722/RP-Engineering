@@ -100,10 +100,10 @@ const heroSlides = [
     titleEm: "Zero Distortion.",
     desc: "Electromagnetic induction heat treatment tailored to increase surface wear resistance while preserving component core toughness.",
     image: {
-      src: "/assets/industrial/precision-gears-pexels.jpg",
+      src: "/assets/industrial/precision-gears-hero.png",
       alt: "Interlocking precision gears representing induction hardening and wear resistance",
-      width: 1600,
-      height: 1067,
+      width: 1672,
+      height: 941,
     },
     metrics: [
       { label: "Case Hardness", val: "58-62 HRC" },
@@ -120,10 +120,10 @@ const heroSlides = [
     titleEm: "Ready for Precision.",
     desc: "Systematic snag grinding, riser trimming, and deburring that delivers clean, defect-free casting surfaces ready for next-stage machining.",
     image: {
-      src: "/assets/industrial/fettling-sparks-pexels.jpg",
+      src: "/assets/industrial/fettling-hero.png",
       alt: "Metal finishing work with sparks in an industrial workshop",
-      width: 1600,
-      height: 1067,
+      width: 1672,
+      height: 941,
     },
     metrics: [
       { label: "Surface Finish", val: "Grade A Clean" },
@@ -140,10 +140,10 @@ const heroSlides = [
     titleEm: "Engineering Specs.",
     desc: "Dedicated light machining support that bridges rough castings directly into assembly-ready precision components.",
     image: {
-      src: "/assets/industrial/light-machining-pexels.jpg",
+      src: "/assets/industrial/light-machining-hero.png",
       alt: "Close-up of precision light machining on a metal component",
-      width: 1600,
-      height: 1417,
+      width: 1672,
+      height: 941,
     },
     metrics: [
       { label: "Tolerance Class", val: "High Precision" },

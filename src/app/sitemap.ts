@@ -12,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         "https://rp-engineering.in/assets/branches/shinoli-bk/melting.png",
         "https://rp-engineering.in/assets/branches/shinoli-bk/cast%20pour.png",
+        "https://rp-engineering.in/assets/industrial/precision-gears-hero.png",
+        "https://rp-engineering.in/assets/industrial/fettling-hero.png",
+        "https://rp-engineering.in/assets/industrial/light-machining-hero.png",
         "https://rp-engineering.in/assets/industrial/precision-gears-pexels.jpg",
         "https://rp-engineering.in/assets/industrial/fettling-sparks-pexels.jpg",
         "https://rp-engineering.in/assets/industrial/light-machining-pexels.jpg",
