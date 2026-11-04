@@ -9,24 +9,52 @@ const services = [
     name: "Melt Casting",
     text: "Controlled melting and casting support for robust components and dependable production runs.",
     tag: "THERMAL",
+    image: {
+      src: "/assets/branches/shinoli-bk/WhatsApp Image 2026-10-31 at 1.03.58 PM.jpeg",
+      alt: "Molten metal work in progress at R.P Engineering Shinoli BK",
+      width: 1600,
+      height: 900,
+      label: "SHINOLI BK / LIVE FLOOR",
+    },
   },
   {
     no: "02",
     name: "Induction Hardening",
     text: "Targeted surface hardening engineered for strength, wear resistance and working life.",
     tag: "PRECISION",
+    image: {
+      src: "/assets/industrial/precision-gears-pexels.jpg",
+      alt: "Interlocking metal gears representing wear-resistant engineering components",
+      width: 1600,
+      height: 1067,
+      label: "REPRESENTATIVE COMPONENT DETAIL",
+    },
   },
   {
     no: "03",
     name: "Fettling Works",
     text: "Clean, consistent finishing that prepares every casting for its next critical operation.",
     tag: "FINISHING",
+    image: {
+      src: "/assets/industrial/fettling-sparks-pexels.jpg",
+      alt: "Metal finishing work with sparks in an industrial workshop",
+      width: 1600,
+      height: 1067,
+      label: "REPRESENTATIVE FINISHING IMAGE",
+    },
   },
   {
     no: "04",
     name: "Light Machining",
     text: "Accurate machining support for the details that turn cast material into a ready part.",
     tag: "ACCURACY",
+    image: {
+      src: "/assets/industrial/light-machining-pexels.jpg",
+      alt: "Close-up of precision machining on a metal component",
+      width: 1600,
+      height: 1417,
+      label: "REPRESENTATIVE MACHINING IMAGE",
+    },
   },
 ];
 
@@ -216,7 +244,10 @@ export default function Home() {
         <div className="services">
           {services.map((service, index) => <article className={`service-card reveal delay-${index + 1}`} key={service.no}>
             <div className="service-top"><span>{service.no}</span><span>{service.tag}</span></div>
-            <div className={`service-glyph glyph-${index + 1}`} aria-hidden="true"><i /><i /><i /></div>
+            <div className={`service-visual service-visual-${index + 1}`}>
+              <Image src={service.image.src} alt={service.image.alt} width={service.image.width} height={service.image.height} sizes="(max-width: 520px) 88vw, (max-width: 850px) 42vw, 21vw" />
+              <span>{service.image.label}</span>
+            </div>
             <h3>{service.name}</h3><p>{service.text}</p><a href="#contact" aria-label={`Enquire about ${service.name}`} className="card-arrow"><Arrow diagonal /></a>
           </article>)}
         </div>
