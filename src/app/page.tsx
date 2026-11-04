@@ -10,11 +10,11 @@ const services = [
     text: "Controlled melting and casting support for robust components and dependable production runs.",
     tag: "THERMAL",
     image: {
-      src: "/assets/industrial/melt-casting-foundry.jpg",
-      alt: "Molten metal pouring in an industrial foundry casting process",
-      width: 1600,
-      height: 1118,
-      label: "REPRESENTATIVE CASTING IMAGE",
+      src: "/assets/branches/shinoli-bk/melting.png",
+      alt: "Molten metal handling and induction casting at R.P Engineering Shinoli BK foundry",
+      width: 1672,
+      height: 941,
+      label: "SHINOLI BK PRODUCTION FLOOR",
     },
   },
   {
@@ -80,10 +80,10 @@ const heroSlides = [
     titleEm: "Built for Endurance.",
     desc: "Controlled thermal processing and casting of high-integrity alloys for mission-critical industrial components.",
     image: {
-      src: "/assets/branches/shinoli-bk/WhatsApp Image 2026-10-31 at 1.03.58 PM (1).jpeg",
-      alt: "Molten metal handling at R.P Engineering Shinoli BK foundry",
-      width: 720,
-      height: 1280,
+      src: "/assets/branches/shinoli-bk/melting.png",
+      alt: "Molten metal handling and induction casting at R.P Engineering Shinoli BK foundry",
+      width: 1672,
+      height: 941,
     },
     metrics: [
       { label: "Operating Temp", val: "1400°C+" },
