@@ -702,6 +702,11 @@ p {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
+/* Mobile Capability Visual Showcase (hidden on desktop) */
+.hero-mobile-visual {
+  display: none;
+}
+
 /* Floating Telemetry & Plant Card */
 .hero-telemetry-panel {
   width: min(300px, 26vw);
@@ -2149,6 +2154,11 @@ body[data-theme="dark"] { background: #0c0f0e; }
   }
 
   /* Hero */
+  .hero-cinematic {
+    min-height: auto;
+    padding-bottom: 24px;
+  }
+
   .hero-live-bar {
     padding-top: 86px;
     flex-direction: column;
@@ -2156,18 +2166,127 @@ body[data-theme="dark"] { background: #0c0f0e; }
     gap: 8px;
   }
 
+  /* Ambient background treatment on mobile/tablet so foreground visual frame stands out */
+  .hero-media-wrapper {
+    inset: 0;
+    opacity: 0.42;
+    filter: blur(6px);
+    transform: scale(1.06);
+  }
+
+  .hero-cinematic-wash {
+    background:
+      linear-gradient(180deg, rgba(6, 9, 8, 0.72) 0%, rgba(6, 9, 8, 0.90) 45%, #060908 100%),
+      linear-gradient(0deg, #060908 0%, transparent 25%);
+  }
+
+  .hero-slide-bg.active .hero-cinematic-image {
+    transform: none; /* disable excessive scale on mobile */
+  }
+
+  .hero-cinematic-image {
+    object-position: center 30%;
+  }
+
   .hero-cinematic-content {
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
-    padding-top: 24px;
-    padding-bottom: 30px;
-    gap: 32px;
+    padding-top: 18px;
+    padding-bottom: 24px;
+    gap: 20px;
   }
 
-  .hero-telemetry-panel {
+  /* Mobile Capability Visual Showcase Frame */
+  .hero-mobile-visual {
+    display: block;
     width: 100%;
-    max-width: 480px;
+    margin: 16px 0 20px;
+  }
+
+  .hero-mobile-visual-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: 280px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #0d1210;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(240, 82, 37, 0.12);
+  }
+
+  .hero-mobile-visual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 50%;
+    display: block;
+    filter: contrast(1.06) saturate(1.05);
+    animation: fadeIn 0.4s ease both;
+  }
+
+  .hero-mobile-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 9, 8, 0.25) 0%, transparent 40%, rgba(6, 9, 8, 0.88) 100%);
+    pointer-events: none;
+  }
+
+  .hero-mobile-visual-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 10px;
+    background: rgba(10, 14, 13, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-mobile-visual-footer {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  }
+
+  .hero-mobile-visual-method {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--hot-pale);
+  }
+
+  .hero-mobile-visual-metric {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Hide the duplicate floating telemetry panel on mobile since info is in the visual badge + metrics */
+  .hero-telemetry-panel {
+    display: none;
   }
 
   .hero-tabs-grid {
@@ -2255,9 +2374,29 @@ body[data-theme="dark"] { background: #0c0f0e; }
   .brand-copy b { font-size: 14px; }
   .brand-copy small { font-size: 6px; }
 
+  /* Live Status Pill: prevent horizontal overflow on 360px screens */
+  .live-status-pill {
+    max-width: 100%;
+    white-space: normal;
+    font-size: 7.8px;
+    line-height: 1.35;
+    padding: 5px 10px;
+    letter-spacing: 0.8px;
+  }
+
+  .hero-live-badge {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
   .hero-cinematic {
     min-height: auto;
     padding-bottom: 24px;
+  }
+
+  .hero-mobile-visual-frame {
+    aspect-ratio: 16 / 10;
+    max-height: 220px;
   }
 
   .hero-title-animated {
@@ -2287,11 +2426,6 @@ body[data-theme="dark"] { background: #0c0f0e; }
     gap: 16px;
     margin-top: 24px;
     padding-top: 18px;
-  }
-
-  .hero-telemetry-panel {
-    width: 100%;
-    padding: 18px 20px;
   }
 
   .hero-tabs-grid {

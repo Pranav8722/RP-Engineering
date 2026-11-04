@@ -421,6 +421,30 @@ export default function Home() {
               {heroSlides[activeSlide].desc}
             </p>
 
+            {/* Mobile & Tablet Dedicated Capability Visual Frame */}
+            <div className="hero-mobile-visual" key={`hero-mobile-visual-${activeSlide}`}>
+              <div className="hero-mobile-visual-frame">
+                <Image
+                  src={heroSlides[activeSlide].image.src}
+                  alt={heroSlides[activeSlide].image.alt}
+                  width={heroSlides[activeSlide].image.width}
+                  height={heroSlides[activeSlide].image.height}
+                  className="hero-mobile-visual-img"
+                  priority
+                  sizes="(max-width: 850px) 92vw, 640px"
+                />
+                <div className="hero-mobile-visual-overlay" />
+                <div className="hero-mobile-visual-badge">
+                  <span className="live-pulse-dot" aria-hidden="true" />
+                  <span>0{activeSlide + 1} / 04 · {heroSlides[activeSlide].badge}</span>
+                </div>
+                <div className="hero-mobile-visual-footer">
+                  <span className="hero-mobile-visual-method">{heroSlides[activeSlide].tabLabel}</span>
+                  <span className="hero-mobile-visual-metric">{heroSlides[activeSlide].metrics[0].val}</span>
+                </div>
+              </div>
+            </div>
+
             <div className="hero-actions">
               <a href="#contact" className="button button-hot">
                 Start a Conversation <Arrow diagonal />
