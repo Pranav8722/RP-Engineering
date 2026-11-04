@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
       images: [
         "https://rp-engineering.in/assets/branches/shinoli-bk/melting.png",
+        "https://rp-engineering.in/assets/branches/shinoli-bk/casting.jpeg",
         "https://rp-engineering.in/assets/industrial/precision-gears-pexels.jpg",
         "https://rp-engineering.in/assets/industrial/fettling-sparks-pexels.jpg",
         "https://rp-engineering.in/assets/industrial/light-machining-pexels.jpg",
