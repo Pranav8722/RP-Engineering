@@ -6,9 +6,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: "https://rp-engineering.in/",
-      lastModified: new Date("2026-11-02"),
-      changeFrequency: "monthly",
-      priority: 1,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1.0,
+      images: [
+        "https://rp-engineering.in/assets/industrial/melt-casting-foundry.jpg",
+        "https://rp-engineering.in/assets/industrial/precision-gears-pexels.jpg",
+        "https://rp-engineering.in/assets/industrial/fettling-sparks-pexels.jpg",
+        "https://rp-engineering.in/assets/industrial/light-machining-pexels.jpg",
+        "https://rp-engineering.in/assets/branches/shinoli-bk/WhatsApp%20Image%202026-10-31%20at%201.03.57%20PM.jpeg",
+      ],
     },
   ];
 }
