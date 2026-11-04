@@ -167,17 +167,38 @@ export default function Home() {
             <div><strong>01</strong><span>Commitment:<br />quality</span></div>
           </div>
         </div>
-        <div className="hero-art reveal delay-1" aria-label="Abstract molten metal industrial artwork" role="img">
+        <div className="hero-art reveal delay-1">
           <div className="art-label label-top">MATERIAL / 01</div>
           <div className="art-label label-right">PROCESS CONTROL</div>
+          <div className="hero-photo-frame">
+            <Image
+              className="hero-photo"
+              src={shinoliImages[0].src}
+              alt="Casting work in progress at the R.P Engineering Shinoli BK facility"
+              width={shinoliImages[0].width}
+              height={shinoliImages[0].height}
+              sizes="(max-width: 850px) 88vw, 35vw"
+              priority
+            />
+          </div>
           <div className="molten-core"><div className="core-ring" /><div className="core-glow" /></div>
           <div className="wire wire-a" /><div className="wire wire-b" /><div className="wire wire-c" />
           <div className="art-corner">RPE<br /><small>INDUSTRIAL<br />SYSTEMS</small></div>
+          <div className="hero-location-card"><span>LIVE FLOOR</span><b>Shinoli BK</b><small>Maharashtra, India</small></div>
           <div className="scanline" />
         </div>
       </section>
 
       <div className="ticker" aria-label="Our services"><div>CASTING <b>✦</b> INDUCTION HARDENING <b>✦</b> FETTLING WORKS <b>✦</b> LIGHT MACHINING <b>✦</b> CASTING <b>✦</b> INDUCTION HARDENING <b>✦</b> FETTLING WORKS <b>✦</b> LIGHT MACHINING <b>✦</b></div></div>
+
+      <section className="proof-band section-shell" aria-label="R.P Engineering operating principles">
+        <p>Metalwork that earns its place in production.</p>
+        <div className="proof-list">
+          <div><span>01</span><b>Material-led</b><small>Process decisions grounded in the part and its application.</small></div>
+          <div><span>02</span><b>Production-minded</b><small>Practical capability for reliable, repeatable work.</small></div>
+          <div><span>03</span><b>Regionally ready</b><small>Three operating locations across Maharashtra and Karnataka.</small></div>
+        </div>
+      </section>
 
       <section id="about" className="statement section-shell">
         <p className="eyebrow reveal"><span /> BUILT FOR THE REAL WORLD</p>
