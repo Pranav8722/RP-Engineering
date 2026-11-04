@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
       images: [
+        "https://rp-engineering.in/assets/branches/shinoli-bk/WhatsApp%20Image%202026-10-31%20at%201.03.58%20PM%20(1).jpeg",
         "https://rp-engineering.in/assets/industrial/melt-casting-foundry.jpg",
         "https://rp-engineering.in/assets/industrial/precision-gears-pexels.jpg",
         "https://rp-engineering.in/assets/industrial/fettling-sparks-pexels.jpg",

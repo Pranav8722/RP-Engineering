@@ -80,10 +80,10 @@ const heroSlides = [
     titleEm: "Built for Endurance.",
     desc: "Controlled thermal processing and casting of high-integrity alloys for mission-critical industrial components.",
     image: {
-      src: "/assets/industrial/melt-casting-foundry.jpg",
-      alt: "Molten metal pouring in an industrial foundry casting process",
-      width: 1600,
-      height: 1118,
+      src: "/assets/branches/shinoli-bk/WhatsApp Image 2026-10-31 at 1.03.58 PM (1).jpeg",
+      alt: "Molten metal handling at R.P Engineering Shinoli BK foundry",
+      width: 720,
+      height: 1280,
     },
     metrics: [
       { label: "Operating Temp", val: "1400°C+" },
