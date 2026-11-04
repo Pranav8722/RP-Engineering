@@ -480,6 +480,10 @@ export default function Home() {
                   <b>{heroSlides[activeSlide].tabLabel}</b>
                 </div>
                 <div className="spec-row">
+                  <span>{heroSlides[activeSlide].metrics[0].label}</span>
+                  <b>{heroSlides[activeSlide].metrics[0].val}</b>
+                </div>
+                <div className="spec-row">
                   <span>Facility</span>
                   <b>{heroSlides[activeSlide].metrics[1].val}</b>
                 </div>

@@ -490,8 +490,8 @@ p {
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(6, 9, 8, 0.97) 0%, rgba(6, 9, 8, 0.90) 42%, rgba(6, 9, 8, 0.52) 72%, rgba(6, 9, 8, 0.80) 100%),
-    linear-gradient(0deg, rgba(6, 9, 8, 0.96) 0%, transparent 35%),
+    linear-gradient(90deg, rgba(6, 9, 8, 0.95) 0%, rgba(6, 9, 8, 0.84) 30%, rgba(6, 9, 8, 0.10) 48%, rgba(6, 9, 8, 0.10) 72%, rgba(6, 9, 8, 0.65) 86%, rgba(6, 9, 8, 0.92) 100%),
+    linear-gradient(0deg, rgba(6, 9, 8, 0.96) 0%, transparent 28%),
     linear-gradient(180deg, rgba(6, 9, 8, 0.85) 0%, transparent 20%);
   pointer-events: none;
 }
@@ -557,13 +557,13 @@ p {
   color: rgba(255, 255, 255, 0.55);
 }
 
-/* Main Content Layout */
+/* Main Content Layout (Desktop: Left Copy, Open Middle, Right Telemetry) */
 .hero-cinematic-content {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(24px, 4vw, 50px);
+  gap: clamp(40px, 8vw, 120px);
   padding-top: clamp(12px, 2.5vw, 28px);
   padding-bottom: clamp(12px, 2.5vw, 28px);
   position: relative;
@@ -571,13 +571,14 @@ p {
 }
 
 .hero-cinematic-copy {
-  max-width: 720px;
+  max-width: 460px;
+  flex: 0 1 460px;
 }
 
 .hero-kicker {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--hot-pale);
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 1.8px;
   text-transform: uppercase;
@@ -588,22 +589,22 @@ p {
 }
 
 .hero-kicker-line {
-  width: 24px;
+  width: 20px;
   height: 2px;
   background: var(--hot);
   flex-shrink: 0;
 }
 
 .hero-title-animated {
-  max-width: 740px;
-  margin: 0 0 18px;
-  font-size: clamp(36px, 4.4vw, 76px);
+  max-width: 460px;
+  margin: 0 0 14px;
+  font-size: clamp(32px, 3.2vw, 52px);
   font-weight: 700;
-  line-height: 0.96;
-  letter-spacing: clamp(-2px, -0.3vw, -4.5px);
+  line-height: 1.05;
+  letter-spacing: clamp(-1px, -0.15vw, -2px);
   font-family: var(--font-sans);
   color: #fff;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.95);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.95);
   animation: slideTextIn 0.5s ease both;
 }
 
@@ -615,14 +616,21 @@ p {
 }
 
 .hero-desc-animated {
-  max-width: 520px;
-  margin: 0 0 24px;
-  color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(14px, 1.1vw, 15.5px);
+  max-width: 420px;
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(13px, 0.95vw, 14.5px);
   line-height: 1.6;
   font-weight: 400;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
   animation: slideTextIn 0.55s ease 0.08s both;
+}
+
+/* On desktop, hide live metrics row from left copy so left side stays clean and open */
+@media (min-width: 851px) {
+  .hero-cinematic-copy .hero-live-metrics {
+    display: none;
+  }
 }
 
 @keyframes slideTextIn {
@@ -922,25 +930,22 @@ p {
     padding-top: 8px;
     padding-bottom: 10px;
   }
+  .hero-cinematic-copy {
+    max-width: 440px;
+  }
   .hero-kicker {
     margin-bottom: 10px;
   }
   .hero-title-animated {
-    font-size: clamp(32px, 3.8vw, 56px);
-    margin-bottom: 12px;
+    font-size: clamp(28px, 2.8vw, 44px);
+    margin-bottom: 10px;
+    max-width: 440px;
   }
   .hero-desc-animated {
-    font-size: 13.5px;
+    font-size: 13px;
     margin-bottom: 16px;
     line-height: 1.5;
-  }
-  .hero-live-metrics {
-    margin-top: 14px;
-    padding-top: 10px;
-    gap: 20px;
-  }
-  .metric-val {
-    font-size: 13.5px;
+    max-width: 390px;
   }
   .hero-telemetry-panel {
     padding: 14px 16px;
@@ -2195,6 +2200,15 @@ body[data-theme="dark"] { background: #0c0f0e; }
     padding-top: 18px;
     padding-bottom: 24px;
     gap: 20px;
+  }
+
+  .hero-cinematic-copy {
+    max-width: 100%;
+    flex: initial;
+  }
+
+  .hero-cinematic-copy .hero-live-metrics {
+    display: flex;
   }
 
   /* Mobile Capability Visual Showcase Frame */
