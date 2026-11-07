@@ -10,10 +10,10 @@ const services = [
     text: "Controlled melting and casting support for robust components and dependable production runs.",
     tag: "THERMAL",
     image: {
-      src: "/assets/branches/shinoli-bk/cast pour.png",
+      src: "/assets/branches/shinoli-bk/cast-pour.webp",
       alt: "Molten metal pouring into casting molds at R.P Engineering Shinoli BK foundry",
-      width: 1672,
-      height: 941,
+      width: 700,
+      height: 394,
       label: "SHINOLI BK PRODUCTION FLOOR",
     },
   },
@@ -23,10 +23,10 @@ const services = [
     text: "Targeted surface hardening engineered for strength, wear resistance and working life.",
     tag: "PRECISION",
     image: {
-      src: "/assets/industrial/precision-gears-pexels.jpg",
+      src: "/assets/industrial/precision-gears-pexels.webp",
       alt: "Interlocking metal gears representing wear-resistant engineering components",
-      width: 1600,
-      height: 1067,
+      width: 700,
+      height: 467,
       label: "REPRESENTATIVE COMPONENT DETAIL",
     },
   },
@@ -36,10 +36,10 @@ const services = [
     text: "Clean, consistent finishing that prepares every casting for its next critical operation.",
     tag: "FINISHING",
     image: {
-      src: "/assets/industrial/fettling-sparks-pexels.jpg",
+      src: "/assets/industrial/fettling-sparks-pexels.webp",
       alt: "Metal finishing work with sparks in an industrial workshop",
-      width: 1600,
-      height: 1067,
+      width: 700,
+      height: 467,
       label: "REPRESENTATIVE FINISHING IMAGE",
     },
   },
@@ -49,10 +49,10 @@ const services = [
     text: "Accurate machining support for the details that turn cast material into a ready part.",
     tag: "ACCURACY",
     image: {
-      src: "/assets/industrial/light-machining-pexels.jpg",
+      src: "/assets/industrial/light-machining-pexels.webp",
       alt: "Close-up of precision machining on a metal component",
-      width: 1600,
-      height: 1417,
+      width: 700,
+      height: 620,
       label: "REPRESENTATIVE MACHINING IMAGE",
     },
   },
@@ -65,9 +65,9 @@ const facilities = [
 ];
 
 const shinoliImages = [
-  { src: "/assets/branches/shinoli-bk/WhatsApp Image 2026-10-31 at 1.03.58 PM.jpeg", alt: "R.P Engineering team working with molten metal at Shinoli BK", width: 1600, height: 900 },
-  { src: "/assets/branches/shinoli-bk/WhatsApp Image 2026-10-31 at 1.03.58 PM (1).jpeg", alt: "Molten metal handling at R.P Engineering Shinoli BK", width: 720, height: 1280 },
-  { src: "/assets/branches/shinoli-bk/WhatsApp Image 2026-10-31 at 1.03.57 PM.jpeg", alt: "Exterior of the R.P Engineering Shinoli BK facility", width: 1600, height: 1200 },
+  { src: "/assets/branches/shinoli-bk/facility-work.webp", alt: "R.P Engineering team working with molten metal at Shinoli BK", width: 1200, height: 675 },
+  { src: "/assets/branches/shinoli-bk/facility-pouring.webp", alt: "Molten metal handling at R.P Engineering Shinoli BK", width: 720, height: 1280 },
+  { src: "/assets/branches/shinoli-bk/facility-exterior.webp", alt: "Exterior of the R.P Engineering Shinoli BK facility", width: 1200, height: 900 },
 ];
 
 const heroSlides = [
@@ -80,10 +80,10 @@ const heroSlides = [
     titleEm: "Built for Endurance.",
     desc: "Controlled thermal processing and casting of high-integrity alloys for mission-critical industrial components.",
     image: {
-      src: "/assets/branches/shinoli-bk/melting.png",
+      src: "/assets/branches/shinoli-bk/melting.webp",
       alt: "Molten metal handling and induction casting at R.P Engineering Shinoli BK foundry",
-      width: 1672,
-      height: 941,
+      width: 1600,
+      height: 900,
     },
     metrics: [
       { label: "Operating Temp", val: "1400°C+" },
@@ -100,10 +100,10 @@ const heroSlides = [
     titleEm: "Zero Distortion.",
     desc: "Electromagnetic induction heat treatment tailored to increase surface wear resistance while preserving component core toughness.",
     image: {
-      src: "/assets/industrial/precision-gears-hero.png",
+      src: "/assets/industrial/precision-gears-hero.webp",
       alt: "Interlocking precision gears representing induction hardening and wear resistance",
-      width: 1672,
-      height: 941,
+      width: 1600,
+      height: 900,
     },
     metrics: [
       { label: "Case Hardness", val: "58-62 HRC" },
@@ -120,10 +120,10 @@ const heroSlides = [
     titleEm: "Ready for Precision.",
     desc: "Systematic snag grinding, riser trimming, and deburring that delivers clean, defect-free casting surfaces ready for next-stage machining.",
     image: {
-      src: "/assets/industrial/fettling-hero.png",
+      src: "/assets/industrial/fettling-hero.webp",
       alt: "Metal finishing work with sparks in an industrial workshop",
-      width: 1672,
-      height: 941,
+      width: 1600,
+      height: 900,
     },
     metrics: [
       { label: "Surface Finish", val: "Grade A Clean" },
@@ -140,10 +140,10 @@ const heroSlides = [
     titleEm: "Engineering Specs.",
     desc: "Dedicated light machining support that bridges rough castings directly into assembly-ready precision components.",
     image: {
-      src: "/assets/industrial/light-machining-hero.png",
+      src: "/assets/industrial/light-machining-hero.webp",
       alt: "Close-up of precision light machining on a metal component",
-      width: 1672,
-      height: 941,
+      width: 1600,
+      height: 900,
     },
     metrics: [
       { label: "Tolerance Class", val: "High Precision" },
@@ -183,7 +183,6 @@ function Arrow({ diagonal = false }: { diagonal?: boolean }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [darkMode, setDarkMode] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -204,12 +203,8 @@ export default function Home() {
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("rp-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const timer = window.setTimeout(() => {
-      const initialTheme = savedTheme ? savedTheme === "dark" : prefersDark;
-      applyTheme(initialTheme);
-      setDarkMode(initialTheme);
-    }, 0);
-    return () => window.clearTimeout(timer);
+    const initialTheme = savedTheme ? savedTheme === "dark" : prefersDark;
+    applyTheme(initialTheme);
   }, []);
 
   /* Scroll: header transparency + progress bar + parallax */
@@ -306,13 +301,13 @@ export default function Home() {
   }
 
   return (
-    <main className={darkMode ? "dark" : ""}>
+    <main suppressHydrationWarning>
       <div className="grain" aria-hidden="true" />
 
       {/* ── HEADER ── */}
       <header className={`site-header${scrolled ? " scrolled" : ""}`}>
         <div className="site-header-inner">
-          <a href="#top" className="brand" aria-label="R.P Engineering home">
+          <a href="#top" className="brand" aria-label="R.P Engineering - Back to top">
             <span className="brand-mark">RP</span>
             <span className="brand-copy">
               <b>R.P ENGINEERING</b>
@@ -336,14 +331,10 @@ export default function Home() {
                 id="theme-switch"
                 type="checkbox"
                 onChange={(event) => {
-                  const isDark = event.currentTarget.checked;
-                  applyTheme(isDark);
-                  setDarkMode(isDark);
+                  applyTheme(event.currentTarget.checked);
                 }}
               />
-              <span className="theme-icon" aria-hidden="true">
-                {darkMode ? "☀" : "☽"}
-              </span>
+              <span className="theme-icon" aria-hidden="true" />
             </label>
 
             <button
@@ -387,6 +378,7 @@ export default function Home() {
                 height={slide.image.height}
                 sizes="100vw"
                 priority={idx === 0}
+                loading={idx === 0 ? "eager" : "lazy"}
               />
             </div>
           ))}
@@ -425,12 +417,13 @@ export default function Home() {
             <div className="hero-mobile-visual" key={`hero-mobile-visual-${activeSlide}`}>
               <div className="hero-mobile-visual-frame">
                 <Image
-                  src={heroSlides[activeSlide].image.src}
+                  src={heroSlides[activeSlide].image.src.replace('.webp', '-sm.webp')}
                   alt={heroSlides[activeSlide].image.alt}
-                  width={heroSlides[activeSlide].image.width}
-                  height={heroSlides[activeSlide].image.height}
+                  width={800}
+                  height={450}
                   className="hero-mobile-visual-img"
-                  priority
+                  priority={activeSlide === 0}
+                  loading={activeSlide === 0 ? "eager" : "lazy"}
                   sizes="(max-width: 850px) 92vw, 640px"
                 />
                 <div className="hero-mobile-visual-overlay" />
@@ -815,14 +808,14 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer className="footer section-shell">
-        <a href="#top" className="brand" aria-label="Back to top">
+        <a href="#top" className="brand" aria-label="R.P Engineering - Back to top">
           <span className="brand-mark">RP</span>
           <span className="brand-copy">
             <b>R.P ENGINEERING</b>
             <small>ENGINEERED FOR ENDURANCE</small>
           </span>
         </a>
-        <p>© {new Date().getFullYear()} R.P Engineering. All rights reserved.</p>
+        <p suppressHydrationWarning>© 2026 R.P Engineering. All rights reserved.</p>
         <a href="#top" className="back-top">Back to top ↑</a>
       </footer>
 

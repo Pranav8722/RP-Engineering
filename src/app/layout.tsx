@@ -68,9 +68,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/industrial/melt-casting-foundry.jpg",
-        width: 1600,
-        height: 1118,
+        url: "/assets/industrial/melt-casting-foundry.webp",
+        width: 1200,
+        height: 838,
         alt: "R.P Engineering melt casting and foundry operations",
       },
     ],
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: "R.P Engineering | Industrial Foundry & Hardening",
     description:
       "High-integrity melt casting, induction hardening (58-62 HRC), fettling, and light machining across Maharashtra and Karnataka.",
-    images: ["/assets/industrial/melt-casting-foundry.jpg"],
+    images: ["/assets/industrial/melt-casting-foundry.webp"],
   },
   robots: {
     index: true,
@@ -110,7 +110,7 @@ const jsonLdData = {
       name: "R.P Engineering",
       legalName: "R.P Engineering Works",
       url: "https://rp-engineering.in",
-      logo: "https://rp-engineering.in/assets/branches/shinoli-bk/WhatsApp%20Image%202026-10-31%20at%201.03.57%20PM.jpeg",
+      logo: "https://rp-engineering.in/assets/branches/shinoli-bk/facility-exterior.webp",
       description:
         "Industrial foundry specializing in melt casting, precision induction hardening (58-62 HRC), casting fettling, and secondary light machining across Maharashtra and Karnataka.",
       telephone: "+919421240625",
@@ -268,8 +268,17 @@ const jsonLdData = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
-      <body>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`} suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/branches/shinoli-bk/melting.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      </head>
+      <body suppressHydrationWarning>
         {children}
         <script
           type="application/ld+json"

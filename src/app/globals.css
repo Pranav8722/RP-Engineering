@@ -2,20 +2,20 @@
    1. CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-  --hot: #f05225;
-  --ember: #ff6b35;
+  --hot: #d03d0f;
+  --ember: #e65100;
   --ink: #0d0f0e;
   --paper: #f3f1ea;
   --bone: #e8e6de;
-  --ash: #7a7e7a;
+  --ash: #5e625e;
   --line: #c5c5be;
-  --gold: #c8a95a;
+  --gold: #b38b30;
   --steel: #3a4040;
   --paper-rgb: 243, 241, 234;
   --bone-rgb: 232, 230, 222;
   --ink-rgb: 13, 15, 14;
-  --hot-rgb: 240, 82, 37;
-  --hot-pale: #fc7249;
+  --hot-rgb: 208, 61, 15;
+  --hot-pale: #e04618;
 
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-display: var(--font-fraunces), Georgia, serif;
@@ -392,6 +392,14 @@ p {
   border-radius: 50%;
   font-size: 15px;
   transition: border-color 0.2s, color 0.2s;
+}
+
+.theme-icon::before {
+  content: "☽";
+}
+
+.dark .theme-icon::before {
+  content: "☀";
 }
 
 .theme-toggle:hover .theme-icon,
@@ -1015,6 +1023,8 @@ p {
    7. TICKER
    ============================================================ */
 .ticker {
+  position: relative;
+  z-index: 10;
   overflow: hidden;
   white-space: nowrap;
   background: var(--hot);
@@ -2002,7 +2012,7 @@ p {
   color: #161918;
 }
 
-.dark .brand-copy small { color: #6a7069; }
+.dark .brand-copy small { color: #9ba099; }
 
 .dark .site-header.scrolled {
   background: rgba(var(--paper-rgb), 0.92);
@@ -2202,7 +2212,11 @@ body[data-theme="dark"] { background: #0c0f0e; }
   /* Hero */
   .hero-cinematic {
     min-height: auto;
-    padding-bottom: 24px;
+    max-height: none;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 28px;
+    justify-content: flex-start;
   }
 
   .hero-live-bar {
@@ -2446,7 +2460,21 @@ body[data-theme="dark"] { background: #0c0f0e; }
 
   .hero-cinematic {
     min-height: auto;
-    padding-bottom: 24px;
+    max-height: none;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 32px;
+    justify-content: flex-start;
+  }
+
+  .hero-cinematic-content {
+    padding-top: 14px;
+    padding-bottom: 16px;
+    gap: 16px;
+  }
+
+  .hero-mobile-visual {
+    margin: 10px 0 16px;
   }
 
   .hero-mobile-visual-frame {
@@ -2455,21 +2483,22 @@ body[data-theme="dark"] { background: #0c0f0e; }
   }
 
   .hero-title-animated {
-    font-size: clamp(34px, 9.5vw, 48px);
-    letter-spacing: -2px;
+    font-size: clamp(30px, 8.5vw, 42px);
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
   }
 
   .hero-cinematic-copy > p:not(.hero-kicker) {
-    font-size: 14px;
-    max-width: 340px;
+    font-size: 13.5px;
+    max-width: 100%;
+    margin-bottom: 12px;
   }
 
   .hero-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 10px;
     width: 100%;
-    flex-wrap: wrap;
   }
 
   .hero-actions .button,
@@ -2480,10 +2509,18 @@ body[data-theme="dark"] { background: #0c0f0e; }
   }
 
   .hero-live-metrics {
+    display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 24px;
-    padding-top: 18px;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .hero-tabs-wrap {
+    margin-top: 16px;
+    margin-bottom: 12px;
+    z-index: 5;
   }
 
   .hero-tabs-grid {
@@ -2500,8 +2537,10 @@ body[data-theme="dark"] { background: #0c0f0e; }
   }
 
   .hero-cinematic-footer {
-    font-size: 7px;
+    font-size: 8px;
     letter-spacing: 0.9px;
+    padding-top: 10px;
+    padding-bottom: 4px;
   }
 
   .proof-list {
